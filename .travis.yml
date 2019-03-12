@@ -1,0 +1,13 @@
+language: python
+sudo: required
+services:
+- docker
+env:
+  global:
+  - IMAGE_NAME=luigid
+  - CONTAINER_NAME=luigid
+script:
+- travis_retry bash test_docker.sh
+notifications:
+  email: true
+  secure: UxJZDq4IPtnkS2uLLiQUoG1uC6dnMppaVWGAQJvBmeYYIXBs40g1ghbnH+oa+3bPR2hUqxKB97dBAk4C0ZV8eTWDoIy5aNHZYHF/qmvMCukq+uN633Ght7g9b3h80VfNl12O0GQRBAxPVatYLFVcBRLsdc/T0lyLPyAn5KfQkNpJ40KmahdDK2P4K59Q6FFd8LpyVApIdrLc1kYHdfTzBSjrqMQy8TEq3BNxbrPNsYwpDpWzD6icTDxsrr0xhi8KS0bGcseA2+mu6Juk9TQdg0dNTqx/CVHcCt4eFOFxjWoH4F5Rz+rMlPAyoFYr/5i3oYAb2Cc3wdCC68izm3UgUaB7e1B53Icq8I08memEJ5NGJh1+aZEwV95F3gyGREw7X6Bb4emzR0kK6m/XKImLBOKPxuFyG0WhoAJogP+sI2+3WwwSgrwiP7vAVbdiwTdP9966VXwdOvNBSHKurE3mt1jKc/tEXDZU8FjRx2h0bmtylLgDP8maLMbOdSGkhd/uuxWfpa9Mbpyg60Ier1ffExeaOJbqy4JCRXarLMuOtd2B0f8ehPXzTfjW9ZnJf6P7Tb2pxPctXzLGlXwMMalgdGaxOcf1mz2rh+04EcDgC1SR1U6qSkiyGjHdKl1FVBIZnIUzUPnUPAAxTkEbjz2nDhOm6Ueioeu+bf0il79PCJs=
