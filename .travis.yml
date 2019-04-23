@@ -6,8 +6,8 @@ services:
     - docker
 env:
     global:
-        - IMAGE_NAME=travis_test_image
-        - CONTAINER_NAME=luigid:$TRAVIS_BRANCH
+        - CONTAINER_NAME=travis_test_image
+        - IMAGE_NAME=luigid:$TRAVIS_BRANCH
         - AWS_DEFAULT_REGION=us-east-1
         - AWS_REGISTRY=536536802960.dkr.ecr
 
@@ -18,8 +18,8 @@ after_success:
     if: env(TRAVIS_BRANCH) = master OR env(TRAVIS_BRANCH)= dev
         - cp configs/.boto .
         - eval $(aws ecr get-login --region us-east-1 --no-include-email)
-        - docker tag $CONTAINER_NAME $AWS_REGISTRY.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_NAME
-        - docker push $AWS_REGISTRY.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_NAME
+        - docker tag $IMAGE_NAME $AWS_REGISTRY.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_NAME
+        - docker push $AWS_REGISTRY.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_NAME
 
 notifications:
     email: true
