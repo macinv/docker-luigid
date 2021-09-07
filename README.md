@@ -1,5 +1,6 @@
 # docker-luigid
 [![Build Status](https://travis-ci.com/macinv/docker-luigid.svg?branch=master)](https://travis-ci.com/macinv/docker-luigid)
+[![Docker Repository on Quay](https://recovery.quay.io/repository/macinv/luigid/status "Docker Repository on Quay")](https://recovery.quay.io/repository/macinv/luigid)
 
 
 [Luigi](https://github.com/spotify/luigi) is a Python package for managing batch jobs.
