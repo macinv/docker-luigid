@@ -1,7 +1,16 @@
-FROM python:3.9
+FROM python:3.10-alpine AS compile-image
+RUN apk add --no-cache libpq-dev gcc libc-dev
 
-ADD requirements.txt /tmp/requirements.txt
-RUN pip install -r /tmp/requirements.txt
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:${PATH}"
+
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+FROM python:3.10-alpine AS build-image
+COPY --from=compile-image /opt/venv /opt/venv
+
+ENV PORT=8082
 
 RUN mkdir -p /var/lib/luigi/data
 RUN touch /var/lib/luigi/data/luigi.db
@@ -11,7 +20,6 @@ ADD client.cfg /etc/luigi/client.cfg
 VOLUME /etc/luigi
 VOLUME /var/lib/luigi
 
-RUN rm /tmp/*
-
-EXPOSE 8082
+ENV PATH="/opt/venv/bin:${PATH}"
+EXPOSE ${PORT}
 CMD ["luigid"]
